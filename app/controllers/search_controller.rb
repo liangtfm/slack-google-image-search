@@ -1,6 +1,8 @@
 require 'json'
 
 class SearchController < ApplicationController
+	skip_before_filter :verify_authenticity_token
+
 	def google_image
 		puts params
 		@base_url = 'https://www.googleapis.com/customsearch/v1'
