@@ -4,21 +4,21 @@ class SearchController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 
 	def google_image
-		puts params
 		@base_url = 'https://www.googleapis.com/customsearch/v1'
 		@key = '?key=' + ENV['GOOGLE_API_KEY']
 		@cx = '&cx=' + ENV['GOOGLE_CX']
-		@query = '&q=' + params[:text]
+
+		@raw_text = params[:text]
+		@trigger_word = params[:trigger_word]
+		@text = @raw_text[@trigger_word.length+1..@raw_text.length].gsub(' ', '+')
+
+		@query = '&q=' + @text
 		@type = '&searchType=image&imgSize=medium'
 
 		@url = @base_url + @key + @cx + @query + @type
 
-		puts @url
-
 		@response = HTTParty.get(@url)
 		@result = JSON.parse(@response.body)
-
-		puts @result
 
 		if @result['items']
 			render json: {'text' => @result['items'].first['link']}, status: 200
