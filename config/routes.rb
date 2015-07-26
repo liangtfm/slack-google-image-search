@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post 'googleimage' => 'search#image'
+  get 'googleimage' => 'search#image'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
