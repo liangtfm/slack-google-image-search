@@ -13,7 +13,7 @@ class SearchController < ApplicationController
 		@response = HTTParty.get(@url)
 		@result = JSON.parse(@response.body)
 		if @result['items']
-			render json: {text: @result['items'].first['link']}
+			render json: {'text' => @result['items'].first['link']}, status: 200
 		else
 			render json: 'Nothing found!'
 		end
