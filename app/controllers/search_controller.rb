@@ -2,6 +2,7 @@ require 'json'
 
 class SearchController < ApplicationController
 	def google_image
+		puts params
 		@base_url = 'https://www.googleapis.com/customsearch/v1'
 		@key = '?key=' + ENV['GOOGLE_API_KEY']
 		@cx = '&cx=' + ENV['GOOGLE_CX']
