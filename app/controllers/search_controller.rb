@@ -13,7 +13,7 @@ class SearchController < ApplicationController
 		@text = @raw_text[@trigger_word.length+1..@raw_text.length].gsub(' ', '+')
 
 		@query = '&q=' + @text
-		@type = '&searchType=image&imgSize=medium'
+		@type = '&searchType=image&imgSize=large'
 
 		@url = @base_url + @key + @cx + @query + @type
 
