@@ -10,8 +10,13 @@ class SearchController < ApplicationController
 
 		@url = @base_url + @key + @cx + @query + @type
 
+		puts @url
+
 		@response = HTTParty.get(@url)
 		@result = JSON.parse(@response.body)
+
+		puts @result
+
 		if @result['items']
 			render json: {'text' => @result['items'].first['link']}, status: 200
 		else
