@@ -15,7 +15,7 @@ class SearchController < ApplicationController
 		if @result['items']
 			render json: {'text' => @result['items'].first['link']}, status: 200
 		else
-			render json: 'Nothing found!'
+			render json: {'text' => 'Nothing found!'}, status: 200
 		end
 	end
 end
