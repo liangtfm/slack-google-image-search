@@ -10,7 +10,7 @@ class SearchController < ApplicationController
 
 		@raw_text = params[:text]
 		@trigger_word = params[:trigger_word]
-		@text = @raw_text[@trigger_word.length+1..@raw_text.length].gsub(' ', '+')
+		@text = @raw_text[@trigger_word.length+1..@raw_text.length].gsub(' ', '%20')
 
 		@query = '&q=' + @text
 		@type = '&searchType=image&imgSize=large'
